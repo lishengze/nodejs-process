@@ -1,1 +1,9 @@
-console.log("worker.js");
+var http = require('http');
+
+console.log('worker.js pid: ', process.pid);
+
+// 
+http.createServer(function (req, res) {
+    res.write(200, {'Content-Type' : 'text/plain'});
+    res.end('Hello World\n');
+}).listen(Math.round( (1 + Math.random()) * 1000), '127.0.0.1');
